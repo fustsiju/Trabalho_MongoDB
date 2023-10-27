@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Catálogo de Jogos</title>
+</head>
+<body style="background: #54a5d4;">
+<h2 style="">Adicionar Jogo</h2>
+    <form action="/add_product" method="POST" style="padding: 10px; ">
+        <p>Nome: <input type="text" name="nome"> </p><br>
+        <p>Descrição: <input name="descricao"></input></p><br>
+        <p>Preço: <input type="text" name="preco"></p><br>
+        <input type="submit" value="Adicionar">
+    </form>
+</div>
+    <h1>Catálogo de Jogos</h1>
+    <ul style="display: flex; list-style-type: none;">
+        {% for jogos in jogos %}
+            <li style=" margin-right: 50px; font-weight: 350;
+            padding: 80px 30px 80px 30px;
+            background: #7c7052; border-radius: 5px; border:1px solid black; cursor:pointer;">
+                <h3>{{ jogos.nome }}</h3>
+                <p>{{ jogos.descricao }}</p>
+                <p>Preço: R$ {{ jogos.preco }}</p>
+                 <form action="/delete_product/{{ jogos._id }}" method="POST" style="align-content: center">
+                    <input type="submit" value="Excluir">
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
